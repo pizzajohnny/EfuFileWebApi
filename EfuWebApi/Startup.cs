@@ -40,6 +40,9 @@ namespace EfuWebApi
                 app.UseDeveloperExceptionPage();
             }
 
+            var itemSearchService = app.ApplicationServices.GetService<IEfuItemSearchService>();
+            itemSearchService.ParseListAsync().GetAwaiter().GetResult();
+
             app.UseCors(builder =>
             {
                 builder.AllowAnyOrigin();
